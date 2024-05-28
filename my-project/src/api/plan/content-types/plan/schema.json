@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "plans",
+  "info": {
+    "singularName": "plan",
+    "pluralName": "plans",
+    "displayName": "plan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "starter": {
+      "type": "string"
+    },
+    "professional": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string"
+    },
+    "enterprise": {
+      "type": "string"
+    },
+    "feature": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::feature.feature",
+      "inversedBy": "plans"
+    }
+  }
+}
