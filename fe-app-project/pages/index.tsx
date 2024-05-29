@@ -231,40 +231,44 @@ export default function Home() {
       }}
       className={`${roboto.className}`}
     >
-      <div className="mx-auto w-full max-w-[976px] mb:pb-[22px] mb:pt-5 lg:max-w-[1165px]">
+      <div className="mx-auto flex w-full max-w-[390px] flex-col items-center mb:max-w-[976px] mb:pb-[22px] mb:pt-5 lg:max-w-[1165px]">
         <Header />
-        <div className="mx-auto max-w-[350px] gap-[34px] pt-[86px] mb:max-w-[870px] mb:py-[64px] lg:max-w-[1165px]">
-          <div className="mt-12">
-            <div className="flex justify-center pt-[48px] mb:pt-[54px]">
+        <div className="mx-auto max-w-[350px] gap-[34px] mb:mb-10 mb:max-w-[870px] lg:max-w-[1165px]">
+          <div className="mb-[86px] mb:mb-16"></div>
+          <div className="mb:pt-12">
+            <div className="flex justify-center mb:pt-[54px]">
               <span
                 style={{
                   textShadow:
                     "0px 1px 100px #000,  20px 0px 40px #000,  20px 20px 20px #000, 10px -10px 10px #000",
                 }}
-                className={`text-home text-center text-[33px] text-[#fff] shadow-[#000/25] ${inter.className}`}
+                className={`text-home text-center text-[33px] text-[#fff] mb:text-[44px] ${inter.className}`}
               >
                 Threads Gallery
               </span>
             </div>
             <div className="mb-5 flex flex-col items-center px-2 mb:mt-[4px] mb:p-0 lg:mt-[3px]">
+              {/* responsive PC */}
               <div className="lg:px-[33px]">
                 <p
                   style={{
                     textShadow: "0px 4px 8px rgba(10, 5, 23, 0.12)",
                   }}
-                  className={`sub-text-home hidden max-w-[300px] mb:max-w-[566px] lg:block  lg:max-w-[692px] ${roboto.className}`}
+                  className={`sub-text-home hidden max-w-[300px] text-center mb:max-w-[566px] lg:block  lg:max-w-[692px] ${roboto.className}`}
                 >
                   Become an expert on how to write threads by taking inspiration
                   from our own {"teams'"} curated examples and use cases.
                 </p>
               </div>
-              <span className="sub-text-home hidden text-[23px] mb:max-w-[566px] lg:hidden lg:max-w-[692px]">
+              {/* responsive Tablet */}
+              <span className="sub-text-home hidden text-[23px] mb:block mb:max-w-[566px] lg:hidden lg:max-w-[692px]">
                 Become an expert on how to write threads by taking{" "}
               </span>
-              <span className="sub-text-home hidden text-[24px] mb:max-w-[566px] lg:hidden lg:max-w-[692px]">
+              <span className="sub-text-home hidden text-[24px] mb:block mb:max-w-[566px] lg:hidden lg:max-w-[692px]">
                 inspiration from our own {"teams'"} curated examples and use
                 cases.
               </span>
+              {/* responsive Mobile */}
               <span className="sub-text-home max-w-[300px] text-base mb:hidden">
                 Become an expert on how to write threads by taking inspiration
                 from
@@ -277,7 +281,7 @@ export default function Home() {
               <Button />
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-6 mb:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 mb:mb-16 mb:grid-cols-3 mb:pb-16">
             {payload.map((item: any, index: number) => (
               <Item key={index} data={item.attributes} />
             ))}

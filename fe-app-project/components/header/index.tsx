@@ -10,12 +10,12 @@ export default function Header() {
         boxShadow:
           "0px 0.637px 0.637px -0.937px rgba(0, 0, 0, 0.11),0px 1.932px 1.932px -1.875px rgba(0, 0, 0, 0.1),0px 5.106px 5.106px -2.812px rgba(0, 0, 0, 0.09),0px 16px 16px -3.75px rgba(0, 0, 0, 0.04)",
       }}
-      className="mx-auto grid max-w-[1108px] grid-cols-3 items-center justify-between rounded-b-[20px] py-5 pl-10 pr-6 mb:mb-5 mb:rounded-[20px]"
+      className="mb-10 grid w-full max-w-[1108px] grid-cols-2 items-center justify-start rounded-b-[20px] py-5 pl-6 pr-5 mb:mb-5 mb:grid-cols-3 mb:rounded-[20px] mb:pl-10 mb:pr-6"
     >
       <div className="col-span-1 hidden justify-start mb:flex">
         <ul className="flex flex-1 items-center gap-10">
           <li>
-            <a className="text-sm font-medium text-[#fff] shadow-[#000/25] text-shadow">
+            <a className="text-sm font-medium text-[#fff]/80 shadow-[#000/25] text-shadow">
               Gallery
             </a>
           </li>
@@ -44,7 +44,7 @@ export default function Header() {
           </li>
         </ul>
       </div>
-      <div className="col-span-1 mx-auto flex items-center justify-center">
+      <div className="col-span-1 items-center justify-self-start mb:justify-center mb:justify-self-center">
         <div className="py-[8.8px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -89,13 +89,13 @@ export default function Header() {
           </svg>
         </div>
       </div>
-      <div className="col-span-1 flex items-center justify-end gap-9">
+      <div className="col-span-1 flex items-center justify-end gap-5 justify-self-end mb:gap-9">
         <div className="hidden mb:flex">
           <span className="text-[15px] font-medium text-[#fff] shadow-[#000/25] text-shadow">
             Login
           </span>
         </div>
-        <div className="rounded-xl bg-[linear-gradient(180deg,#7D66F5,#4A29C2)] pb-[10.41px] pl-[18.06px] pr-[23.94px] pt-[8.59px]">
+        <div className="shrink-0 rounded-xl bg-[linear-gradient(180deg,#7D66F5,#4A29C2)] pb-[10.41px] pl-[18.06px] pr-[23.94px] pt-[8.59px]">
           <span className="text-[15px] font-medium text-[#fff] shadow-[#000/25] text-shadow">
             Sign up
           </span>

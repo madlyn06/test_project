@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export default function Item({ data }: { data: any }) {
-  console.log(data.image?.data?.attributes.url);
+  console.log("http://localhost:1337" + data.image?.data?.attributes.url);
   return (
     <div
       className="col-span-1 overflow-hidden rounded-2xl"
@@ -12,15 +12,24 @@ export default function Item({ data }: { data: any }) {
       }}
     >
       <div>
-        {/*   */}
-        <img
+        <Image
+          alt="anh"
+          // src={"http://localhost:1337" + data.image?.data?.attributes.url}
+          src={"/image1.png"}
+          className="h-full w-full"
+          width={10000}
+          height={10000}
+          // fill={true}
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        {/* <img
           src={"http://localhost:1337" + data.image?.data?.attributes.url}
           className="w-full"
           alt=""
-        />
+        /> */}
       </div>
-      <div className="bg-[#201F29] p-9 pb-[52px] mb:pb-[75px]">
-        <h3 className="text-center text-[27px] font-bold tracking-[-0.5px] text-[#fff]">
+      <div className=" flex min-h-[225px] flex-col gap-[15px] bg-[#201F29] p-9 pb-0 mb:gap-4 mb:p-9  lg:pb-0">
+        <h3 className="text-center text-[27px] font-bold leading-[30px] tracking-[-0.5px] text-[#fff] lg:text-[28px]">
           {data.heading}
         </h3>
         <p className="text-center tracking-[-0.4px] text-[#e0e0e0]">
@@ -28,7 +37,7 @@ export default function Item({ data }: { data: any }) {
         </p>
         {/* <p className="text-[#e0e0e0] text-center tracking-[-0.4px]"></p> */}
       </div>
-      <div className="bg-[#16151E] px-[56px] py-5 mb:px-8 lg:px-12">
+      <div className="bg-[#16151E] px-0 py-5 text-center mb:px-8 lg:px-0">
         <p className="text-center text-sm text-[#9d9ab7]">{data.desc_sub}</p>
       </div>
     </div>

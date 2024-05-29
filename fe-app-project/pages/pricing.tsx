@@ -31,9 +31,9 @@ function Button({
   return (
     <button
       style={button_style}
-      className={`flex w-full items-center justify-center rounded-lg bg-[#f2f2f2] py-4 ${button_class}`}
+      className={`flex w-full items-center justify-center rounded-lg py-4 ${button_class ? button_class : "bg-[#f2f2f2]"}`}
     >
-      <span className="text-sm font-bold leading-4 text-[#0a0517] ">
+      <span className="text-sm font-bold leading-4 text-[#0a0517]">
         {content}
       </span>
     </button>
@@ -60,16 +60,16 @@ function Advertisement({
       className="flex justify-between gap-9 rounded-[20px] px-7 py-6  "
       style={background_style}
     >
-      <div className="flex flex-col justify-between gap-[10px]  ">
+      <div className=" flex flex-col justify-between mb:gap-[10px]">
         <div>
           <p
             style={text_style}
-            className={`${inter.className} text-[31px] leading-[48px]`}
+            className={`${inter.className} text-[23px] leading-[48px] tracking-[0.1px] mb:text-[31px]`}
           >
             {heading}
           </p>
         </div>
-        <div className="pr-[14px]">
+        <div className="mb-9 mb:mb-0 mb:pr-[14px] mb:pt-9">
           <p
             className={`${roboto.className} text-lg font-normal leading-[27px] tracking-[0.1px] text-white`}
           >
@@ -77,14 +77,17 @@ function Advertisement({
           </p>
         </div>
         {desc_sub && (
-          <div className="mt-[27px]">
+          <div className="mb-9 mt-[27px] mb:mb-0">
             <p className="text-lg leading-[27px] tracking-[0.1px] text-white">
               {desc_sub}
             </p>
           </div>
         )}
+        <div className="flex w-full max-w-[248px] items-center mb:hidden">
+          <Button content="Contact Sales" button_style={button_style} />
+        </div>
       </div>
-      <div className="flex w-full max-w-[248px] items-center">
+      <div className="hidden w-full max-w-[248px] items-center mb:flex ">
         <Button content="Contact Sales" button_style={button_style} />
       </div>
     </div>
@@ -98,6 +101,7 @@ function ItemLevel({
   features,
   desc_sub,
   button_class,
+  class_style,
 }: {
   features: string[];
   level: string;
@@ -105,42 +109,36 @@ function ItemLevel({
   description: string;
   desc_sub?: string;
   button_class?: string;
+  class_style: React.CSSProperties;
 }) {
   return (
-    <div
-      style={{
-        borderRadius: "20px",
-        background:
-          "linear-gradient(0deg, rgba(66, 66, 66, 0.00) 0%, rgba(112, 112, 178, 0.20) 100%)",
-        boxShadow:
-          "0px 0.796px 2.389px -0.625px rgba(0, 0, 0, 0.05), 0px 2.415px 7.244px -1.25px rgba(0, 0, 0, 0.05), 0px 6.383px 19.148px -1.875px rgba(0, 0, 0, 0.05), 0px 20px 60px -2.5px rgba(0, 0, 0, 0.05)",
-      }}
-      className="col-span-1 p-4"
-    >
-      <div className="flex flex-col items-center justify-center">
+    <div style={class_style} className="col-span-1 rounded-[20px] p-9 mb:p-4">
+      <div className="flex flex-col mb:items-center mb:justify-center">
         <p
-          className={`mb-4 text-center text-white ${inter.className} text-[19px] leading-[30px] `}
+          className={`mb-4 w-full text-start text-white mb:text-center ${inter.className} text-[19px] leading-[30px] `}
         >
           {level}
         </p>
-        <div className="mb-4 flex max-w-[105px] flex-col items-start">
+        <div className="mb-4 flex gap-6 justify-self-start mb:max-w-[105px] mb:flex-col mb:items-start mb:gap-0">
           <h3
             className={`text-[51px] leading-[54px] tracking-[-2px] text-white ${inter.className}`}
           >
             {price}
           </h3>
-          <p
-            className={`text-sm font-semibold leading-[21px] text-white ${manrope.className}`}
-          >
-            {description}
-          </p>
-          {desc_sub && (
+          <div className="flex flex-col">
             <p
-              className={`text-xs font-semibold leading-[18px] text-white/50 ${manrope.className}`}
+              className={`w-full text-sm font-semibold leading-[21px] text-white ${manrope.className}`}
             >
-              {desc_sub}
+              {description}
             </p>
-          )}
+            {desc_sub && (
+              <p
+                className={`w-full text-xs font-semibold leading-[18px] text-white/50 ${manrope.className}`}
+              >
+                {desc_sub}
+              </p>
+            )}
+          </div>
         </div>
       </div>
       <div>
@@ -301,8 +299,10 @@ function PricingPage() {
       }}
       className={`${roboto.className} h-auto`}
     >
-      <div className="pt-5">
-        <Header />
+      <div className="mb:pt-5">
+        <div className="flex justify-center">
+          <Header />
+        </div>
         <div className="mx-auto mb-[30px] mt-[10px] flex flex-col items-center">
           <p
             style={{
@@ -325,8 +325,8 @@ function PricingPage() {
           </div>
         </div>
       </div>
-      <div className="mx-auto w-full py-10 lg:max-w-[940px]">
-        <div className="grid grid-cols-3 gap-4">
+      <div className="mx-auto w-full px-5 py-10 mb:max-w-[922px] mb:px-0 lg:max-w-[940px]">
+        <div className="grid grid-cols-1 gap-4 mb:grid-cols-3">
           <ItemLevel
             level="Starter"
             price="Free"
@@ -337,9 +337,22 @@ function PricingPage() {
               "500 chat messages",
               "SOC2 + GDPR compliance",
             ]}
+            class_style={{
+              background:
+                "linear-gradient(0deg, rgba(66, 66, 66, 0.00) 0%, rgba(112, 112, 178, 0.20) 100%)",
+              boxShadow:
+                "0px 0.796px 2.389px -0.625px rgba(0, 0, 0, 0.05), 0px 2.415px 7.244px -1.25px rgba(0, 0, 0, 0.05), 0px 6.383px 19.148px -1.875px rgba(0, 0, 0, 0.05), 0px 20px 60px -2.5px rgba(0, 0, 0, 0.05)",
+            }}
             description="Unlimited users and guests"
           />
           <ItemLevel
+            button_class="bg-[#70FF88]"
+            class_style={{
+              background:
+                "linear-gradient(0deg, rgba(66, 66, 66, 0.00) 0%, rgba(34, 103, 46, 0.30) 100%)",
+              boxShadow:
+                "0px 0.796px 2.389px -0.625px rgba(0, 0, 0, 0.05), 0px 2.415px 7.244px -1.25px rgba(0, 0, 0, 0.05), 0px 6.383px 19.148px -1.875px rgba(0, 0, 0, 0.05), 0px 20px 60px -2.5px rgba(0, 0, 0, 0.05)",
+            }}
             level="Professional"
             price="$10"
             features={[
@@ -350,9 +363,14 @@ function PricingPage() {
             ]}
             description="per user/month"
             desc_sub="billed monthly"
-            button_class="bg-[#70FF88]"
           />
           <ItemLevel
+            class_style={{
+              background:
+                "linear-gradient(0deg, rgba(66, 66, 66, 0.00) 0%, rgba(8, 124, 140, 0.30) 100%)",
+              boxShadow:
+                "0px 0.796px 2.389px -0.625px rgba(0, 0, 0, 0.05), 0px 2.415px 7.244px -1.25px rgba(0, 0, 0, 0.05), 0px 6.383px 19.148px -1.875px rgba(0, 0, 0, 0.05), 0px 20px 60px -2.5px rgba(0, 0, 0, 0.05)",
+            }}
             level="Organization"
             price="$18"
             features={[
@@ -432,7 +450,7 @@ Professional provides at a more achievable price point. "
               background: "linear-gradient(180deg, #E99FF2 0%, #D375EA 100%)",
             }}
           />
-          <div className="pt-[71px] text-center">
+          <div className="hidden pt-[71px] text-center mb:block">
             <span
               className={`text-center text-5xl font-semibold leading-[56px] text-white ${roboto.className}`}
             >
@@ -441,7 +459,7 @@ Professional provides at a more achievable price point. "
           </div>
         </div>
         <div
-          className="rounded-[20px] p-4"
+          className="hidden rounded-[20px] p-4 mb:block"
           style={{
             background:
               "linear-gradient(0deg, rgba(66, 66, 66, 0.15) 0%, rgba(112, 112, 178, 0.20) 100%)",
@@ -560,7 +578,7 @@ Professional provides at a more achievable price point. "
           className="mt-12 flex flex-col items-center rounded-[20px]"
         >
           <div className="mt-[47px]">
-            <p className="text-4xl font-semibold leading-[43px] tracking-[-0.2px] text-white ">
+            <p className="text-center text-[32px] font-semibold leading-[43px] tracking-[-0.2px] text-white mb:text-4xl ">
               Make the switch to Threads
             </p>
           </div>
