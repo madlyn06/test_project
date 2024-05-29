@@ -12,7 +12,7 @@ export default function Item({ data }: { data: any }) {
       }}
     >
       <div>
-        <Image
+        {/* <Image
           alt="anh"
           // src={"http://localhost:1337" + data.image?.data?.attributes.url}
           src={"/image1.png"}
@@ -20,13 +20,13 @@ export default function Item({ data }: { data: any }) {
           width={10000}
           height={10000}
           // fill={true}
-        />
+        /> */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        {/* <img
+        <img
           src={"http://localhost:1337" + data.image?.data?.attributes.url}
           className="w-full"
           alt=""
-        /> */}
+        />
       </div>
       <div className=" flex min-h-[225px] flex-col gap-[15px] bg-[#201F29] p-9 pb-0 mb:gap-4 mb:p-9  lg:pb-0">
         <h3 className="text-center text-[27px] font-bold leading-[30px] tracking-[-0.5px] text-[#fff] lg:text-[28px]">
