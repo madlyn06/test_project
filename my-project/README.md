@@ -43,7 +43,7 @@ JWT_SECRET=p0PBe4eq+6rVtBvnCwnBbQ==
 To import data, please run:
 
 ```
-npm run strapi import -- -f export_20240528182840.tar.gz
+npm run strapi import -- -f export_20240529195214.tar.gz
 ```
 
 Then, in terminal `my-project` type `npm run dev`, then, in tab Settings choose API token and copy it and save.
