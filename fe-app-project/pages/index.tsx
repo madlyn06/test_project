@@ -217,7 +217,7 @@ export default function Home() {
     const data = await fetch("http://localhost:1337/api/posts?populate=image", {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer 2eb31109d41241e4151cd16ff756f70030932ad9d19527a5ff59736901f026ee64be7e3b84ad323873fc246448971e08d6b015986a21a2a3531082c9a300d7f7bc9af16ece6ee9dbd79fb067e7cc1e34e31b5fbe696072dec9c486a088adf65834e2c5ba7c7f48a09a99cd33799d7cc6481b760a098edc70dff9316ef38ee23e`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEYTOKEN}`,
       },
     });
     const payload = await data.json();
@@ -282,9 +282,11 @@ export default function Home() {
             </div>
           </div>
           <div className="grid grid-cols-1 gap-6 mb:mb-16 mb:grid-cols-3 mb:pb-16">
-            {payload.map((item: any, index: number) => (
-              <Item key={index} data={item.attributes} />
-            ))}
+            {payload &&
+              payload.length > 0 &&
+              payload.map((item: any, index: number) => (
+                <Item key={index} data={item.attributes} />
+              ))}
           </div>
         </div>
         <Footer />
